@@ -2,7 +2,8 @@
 
 namespace ServersideData
 {
-    public class Class1
+    public interface IDataAccess 
     {
+        int Commit();
     }
 }
