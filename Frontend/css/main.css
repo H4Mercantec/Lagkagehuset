@@ -86,17 +86,17 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-h2 {
-  color:#808080;
-}
 
-nav {
+footer, nav {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  height: 30px;
-  background-color: #CCC;
+  background-color:#CCC;
+}
+
+nav {
+  height: 60px;
 }
 
 section {
@@ -104,12 +104,14 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #DDD url("img/background.jpg") no-repeat center;
+  background: #DDD url("../img/background.jpg") no-repeat center;
 }
 
-h1, h2, footer {
-  background-color:#CCC;
+footer {
+  height: 30px;
 }
+
+
 
 /* ==========================================================================
    Helper classes
