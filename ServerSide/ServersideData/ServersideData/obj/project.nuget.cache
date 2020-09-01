@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "e51T1KFxkzJuFUD75ejiHQO4901fSr726zITRyIZN7BGK3Q5S3OUJdnQafTcGzOyBm8zzFLgBurWYiQHSUdUvw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\keg\\Desktop\\Expo\\Github\\Lagkagehuset\\ServerSide\\ServersideData\\ServersideData\\ServersideData.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\keg\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\keg\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
