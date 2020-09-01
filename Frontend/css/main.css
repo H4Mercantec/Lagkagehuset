@@ -130,6 +130,30 @@ footer {
   display: none !important;
 }
 
+.gray-background {
+  background-color: #fafafa;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;  
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-text {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.submit-button {
+  flex: 1;
+  align-self: center;
+  padding: 5px;
+  margin: 10px;
+}
+
 /*
  * Hide only visually, but have it available for screen readers:
  * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
