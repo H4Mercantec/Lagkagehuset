@@ -87,6 +87,45 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+footer, nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color:#CCC;
+}
+
+img {
+  width: 300px;
+}
+
+nav {
+  height: 60px;
+  flex-direction: row;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #DDD url("../img/background.jpg") no-repeat center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+footer {
+  flex-direction: row;
+}
+
+footer div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
