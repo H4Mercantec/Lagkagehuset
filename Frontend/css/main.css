@@ -89,7 +89,6 @@ textarea {
 
 footer, nav {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
   align-items: center;
   background-color:#CCC;
@@ -101,6 +100,7 @@ img {
 
 nav {
   height: 60px;
+  flex-direction: row;
 }
 
 section {
@@ -109,10 +109,19 @@ section {
   justify-content: center;
   align-items: center;
   background: #DDD url("../img/background.jpg") no-repeat center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 footer {
-  height: 30px;
+  flex-direction: row;
+}
+
+footer div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 
