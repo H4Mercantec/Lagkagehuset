@@ -13,44 +13,47 @@
   </head>
 
   <body>
-    <nav>
-      <img src="img/lkh-logo.svg">
-      <div>
-        <a href="index.html">Home</a>
-        <a href="bestilling.html">Bestil</a>
-        <a href="om.html">Om</a>
-      </div>
-    </nav>   
-      
-    <section>
-        <div class="gray-background" style="position: relative;">
-          <h1 style="color:#000000;">Bestilling</h1>
-              <label class="form-text" for="fname">Navn:</label><br>
-              <input type="text" id="fname" name="fname" value=""><br>
-              <label class="form-text" for="lname">Telefon:</label><br>
-              <input type="text" id="lname" name="lname" value=""><br><br>
-              <label class="form-text" for="lname">Antal Rundstykker:</label><br>
-              <input type="text" id="antalrundstykker" name="antalrundstykker" value=""><br><br>
-              <input class="submit-button" type="submit" value="Submit"><br><br>
-          </form>
-        </div>
-      <form action="action_page.php" method="GET">
-    </section>
-        
-    <footer>  
-      <div>          
-        <p>Lagkagehuset A/S</p>
-        <p>Dortheavej 10</p>
-        <p>Tlf. nr.: 72 14 47 00</p>
-      </div>
-      <div>
-        <p>DK</p>
-        <p>2400 København NV</p>
-        <p>CVR-nr.: 20213094</p>
-      </div>
-    </footer>
 
-    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="js/main.js"></script>
+      <div style="position:relative;min-height:100%;">
+          <nav>
+              <img src="img/lkh-logo.svg">
+              <div>
+                  <a href="index.html">Home</a>
+                  <a href="bestilling.html">Bestil</a>
+                  <a href="om.html">Om</a>
+              </div>
+          </nav>
+
+          <section>
+              <div class="gray-background" style="position: relative;">
+                  <h1 style="color:#000000;">Bestilling</h1>
+                  <label class="form-text" for="fname">Navn:</label><br>
+                  <input type="text" id="fname" name="fname" value=""><br>
+                  <label class="form-text" for="lname">Telefon:</label><br>
+                  <input type="text" id="lname" name="lname" value=""><br><br>
+                  <label class="form-text" for="lname">Antal Rundstykker:</label><br>
+                  <input type="text" id="antalrundstykker" name="antalrundstykker" value=""><br><br>
+                  <input class="submit-button" type="submit" value="Submit"><br><br>
+                  </form>
+              </div>
+              <form action="action_page.php" method="GET">
+          </section>
+
+          <footer>
+              <div>
+                  <p>Lagkagehuset A/S</p>
+                  <p>Dortheavej 10</p>
+                  <p>Tlf. nr.: 72 14 47 00</p>
+              </div>
+              <div>
+                  <p>DK</p>
+                  <p>2400 København NV</p>
+                  <p>CVR-nr.: 20213094</p>
+              </div>
+          </footer>
+          </div>
+
+          <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+          <script src="js/main.js"></script>
   </body>
 </html>
