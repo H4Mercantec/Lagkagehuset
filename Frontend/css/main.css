@@ -12,9 +12,10 @@
    ========================================================================== */
 
 html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+    height: 100%;
 }
 
 /*
@@ -99,22 +100,22 @@ img {
 }
 
 nav {
-  height: 60px;
-  flex-direction: row;
+    height: 60px;
+    flex-direction: row;
 }
 
 section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #DDD url("../img/background.jpg") no-repeat center;
-  width: 80%;
-  margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    background: #DDD url("../img/background.jpg") no-repeat fixed;
 }
 
 footer {
-  flex-direction: row;
+    flex-direction: row;
 }
 
 footer div {
@@ -122,6 +123,13 @@ footer div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#rolls {
+    border: 2px solid #555;
+    border-radius: 3px;
+    margin: 10px;
+    transform: rotate(17deg);
 }
 
 
@@ -137,6 +145,30 @@ footer div {
 .hidden,
 [hidden] {
   display: none !important;
+}
+
+.gray-background {
+  background-color: #fafafa;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;  
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-text {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.submit-button {
+  flex: 1;
+  align-self: center;
+  padding: 5px;
+  margin: 10px;
 }
 
 /*
