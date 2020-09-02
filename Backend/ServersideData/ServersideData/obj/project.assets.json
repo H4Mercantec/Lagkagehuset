@@ -6200,23 +6200,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\keg\\.nuget\\packages\\": {},
-    "D:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\clemm\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\keg\\Desktop\\Expo\\Github\\Lagkagehuset\\ServerSide\\ServersideData\\ServersideData\\ServersideData.csproj",
+      "projectUniqueName": "D:\\Programming\\Datatekniker\\H4\\Lagkagehuset\\Backend\\ServersideData\\ServersideData\\ServersideData.csproj",
       "projectName": "ServersideData",
-      "projectPath": "C:\\Users\\keg\\Desktop\\Expo\\Github\\Lagkagehuset\\ServerSide\\ServersideData\\ServersideData\\ServersideData.csproj",
-      "packagesPath": "C:\\Users\\keg\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\keg\\Desktop\\Expo\\Github\\Lagkagehuset\\ServerSide\\ServersideData\\ServersideData\\obj\\",
+      "projectPath": "D:\\Programming\\Datatekniker\\H4\\Lagkagehuset\\Backend\\ServersideData\\ServersideData\\ServersideData.csproj",
+      "packagesPath": "C:\\Users\\clemm\\.nuget\\packages\\",
+      "outputPath": "D:\\Programming\\Datatekniker\\H4\\Lagkagehuset\\Backend\\ServersideData\\ServersideData\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\keg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\clemm\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
