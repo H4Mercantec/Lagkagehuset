@@ -59,7 +59,7 @@ namespace LagkagehusetAPI.Controllers
                 },
                 new ShopModel()
                 {
-                    shopID = 1,
+                    shopID = 2,
                     address = "Vestergade 26",
                     city = "Birkerød",
                     phoneNumber = "54235868",
