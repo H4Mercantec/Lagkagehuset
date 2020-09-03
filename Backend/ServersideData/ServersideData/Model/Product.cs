@@ -11,5 +11,11 @@ namespace ServersideData.Model
         public int productID { get; set; }
 
         public string name { get; set; }
+
+        public Product(int productID, string name)
+        {
+            this.productID = productID;
+            this.name = name;
+        }
     }
 }

@@ -13,5 +13,14 @@ namespace ServersideData.Model
         public string city { get; set; }
         public string postCode { get; set; }
         public string phoneNumber { get; set; }
+
+        public Shop(int shopID, string address, string city, string postCode, string phoneNumber)
+        {
+            this.shopID = shopID;
+            this.address = address;
+            this.city = city;
+            this.postCode = postCode;
+            this.phoneNumber = phoneNumber;
+        }
     }
 }
