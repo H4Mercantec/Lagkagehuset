@@ -42,3 +42,11 @@ function switchStore(elm) {
     currentStore = selectedStore;
     makeOversigt(selectedStore);
 }
+
+function resetBasket() {
+    for (var i = 0; i < rundstykkerImg.length; i++) {
+        var optElm = document.getElementById(rundstykkerImg[i]);
+        if (optElm == undefined) continue;
+        optElm.value = 0;
+    }
+}
