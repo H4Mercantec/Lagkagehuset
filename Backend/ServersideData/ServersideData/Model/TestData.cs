@@ -30,6 +30,7 @@ namespace ServersideData.Model
             while (i < brod.Length)
             {
                 products.Add(new Product(i+1, brod[0]));
+                i++;
             }
             string[] adress = { "Amager Strandvej 112", "Amagerbrogade 148", "Vermlandsgade 51", "Bagsværd Hovedgade 128", "Passagerterminalen 10" };
             string[] city = { "København S", "København S", "København S", "Bagsværd", "Billund" };
@@ -38,7 +39,8 @@ namespace ServersideData.Model
             i = 0;
             while (i < adress.Length)
             {
-                shops.Add(new Shop(i + 1, adress[i], city[i], postcode[i], phonenumber[i]));
+                shops.Add(new Shop(i+1, adress[i], city[i], postcode[i], phonenumber[i]));
+                i++;
             }
             int[] shopid = { 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5 };
             int[] proid = { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 4, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 2, 3, 5, 6, 7, 8, 1, 2, 3 };
@@ -47,6 +49,7 @@ namespace ServersideData.Model
             while (i < shopid.Length)
             {
                 inventories.Add(new Inventory(i + 1, shopid[i], proid[i], amount[i]));
+                i++;
             }
 
         }

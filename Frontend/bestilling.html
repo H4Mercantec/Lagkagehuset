@@ -26,7 +26,7 @@
           <div class="gray-background" style="position: relative;">
               <form action="action_page.php" method="GET">
                   <h1 style="color:#000000;">Bestilling</h1>
-                  <label class="form-text" for="butik">Butik:</label><br>
+                  <label class="form-text" for="butik" onchange="switchStore">Butik:</label><br>
                   <select name="butik" id="butik"></select><br><br>
 
                   <div id="oversigt"></div>
@@ -85,19 +85,18 @@
           
            function addAllShops()
            {
-               alert(JSON.stringify(apiArray));
               if (apiArray.length > 0)
               {
                   shops = "";
                   for (i = 0; i < apiArray.length; i++)
-                      shops += apiArray[i].city + ","; // todoo tilføj korekt label (name) til label i api
-                  // todoo tilføj rundstykker
+                      shops += apiArray[i].city + ",";
                }
 
               allShops = shops.split(",");
               liste = rundstykker.split(",");
 
-              console.log(apiArray)
+               console.log(apiArray)
+               addShopToDropdown(undefined);
               allShops.forEach(shop => { addShopToDropdown(shop); });
               makeOversigt();
           }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ServersideData;
 using ServersideData.EntityAsModel;
 using ServersideData.Model;
 
@@ -14,7 +15,7 @@ namespace LagkagehusetAPI.Controllers
     public class ShopsController : ControllerBase
     {
         private readonly ILogger<ShopsController> _logger;
-
+        private readonly DataAccess dataAccess;
         private List<ShopModel> tempTestShops = new List<ShopModel>() {
             new ShopModel()
             {
@@ -81,6 +82,8 @@ namespace LagkagehusetAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ShopModel>>> Get(bool includeRollData = false)
         {
+            DataAccess dataAccess = new DataAccess();
+            return dataAccess.GetShopsWithInventory().ToList();
             var tempData = tempTestShops;
             if (!includeRollData)
             {
