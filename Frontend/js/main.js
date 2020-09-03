@@ -71,4 +71,11 @@ function showOrderResponse(data) {
     div.appendChild(divText);
     orderDiv.innerHTML = "";
     orderDiv.appendChild(div);
+
+
+    var button = document.createElement("button");
+    var buttonText = document.createTextNode("Click to reload");
+    button.appendChild(buttonText);
+    button.onclick = () => window.location.reload();
+    orderDiv.appendChild(button);
 }
