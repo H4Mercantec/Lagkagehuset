@@ -30,7 +30,7 @@ namespace LagkagehusetAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<IDataAccess, DataAccess>();
+            services.AddSingleton<IDataAccess, DataAccess>(); // Use singleton so no reload on every controller
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
