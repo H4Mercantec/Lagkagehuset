@@ -59,6 +59,7 @@
       <script>
 
           apiArray = [];
+          var currentStore = undefined;
           shops = "Amager- Strand,Amager- Amagerbrogade,Amager- Vermlandsgade,Bagsværd- Meny,Billund Lufthavn";
           rundstykker = 'almrundstykker,fransk-horn,giffel,handvaerker,kernebidder,majsstykke,sostjerne,trekorns';
           rundstykkerImg = rundstykker.split(",");
@@ -113,9 +114,9 @@
                   html += "<div style='text-align:center;'><b>" + product.name + "</b></div>";
                   html += "<div style='width:100%;height:40vh;overflow: hidden'><img src='img/" + rundstykkerImg[product.productID-1] + ".jpg' style='position:relative;top:-50px;'></div>";
                   html += "<div style='text-align:center'>";
-                  html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + rundstykker[product.productID] + "\",-1)'> - </div>";
-                  html += "<div style='display:inline-table;width:50%'> <input style='width:auto;text-align:center;-webkit-appearance: none;-moz-appearance: textfield;' type='number' id='" + rundstykker[product.productID] + "'  name='" + rundstykker[product.productID] + "' value='0'> </div>";
-                  html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + rundstykker[product.productID] + "\",1)'> + </div><br>";
+                  html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + rundstykkerImg[product.productID] + "\",-1)'> - </div>";
+                  html += "<div style='display:inline-table;width:50%'> <input style='width:auto;text-align:center;-webkit-appearance: none;-moz-appearance: textfield;' type='number' id='" + rundstykkerImg[product.productID] + "'  name='" + rundstykker[product.productID] + "' value='0'> </div>";
+                  html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + rundstykkerImg[product.productID] + "\",1)'> + </div><br>";
                   html += "<div style='text-align:center;'><b>Tilgængelige: " + listeOfRolls[i].amount + " stk.</b></div>";
                   html += "</div>";
               }
@@ -132,7 +133,22 @@
 
           function changeAmount(id,amount)
           {
-              if ((document.getElementById(id).value>0&&amount==-1)||amount==1)
+              if ((document.getElementById(id).value > 0 && amount == -1) || amount == 1) {
+                  var newAmount = document.getElementById(id).value * 1 + amount;
+                  var inventoryAmount = 0;
+
+                  for (var i = 0; i < currentStore.inventories.length; i++) {
+                      if (rundstykkerImg[currentStore.inventories[i].product.productID] == id) {
+                          inventoryAmount = currentStore.inventories[i].amount;
+                          break;
+                      }
+                  }
+
+                  if (newAmount > inventoryAmount) {
+                      newAmount = inventoryAmount;
+                      alert("Max antal rundstykker tilføjet");
+                  }
+              }
                   document.getElementById(id).value = document.getElementById(id).value*1+amount;
           }
       </script>

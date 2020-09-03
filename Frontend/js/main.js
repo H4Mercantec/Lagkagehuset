@@ -15,5 +15,6 @@ function switchStore(elm) {
             break;
         }
     }
+    currentStore = selectedStore;
     makeOversigt(selectedStore);
 }
