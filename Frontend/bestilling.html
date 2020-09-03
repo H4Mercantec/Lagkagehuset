@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#fafafa">
   </head>
 
-  <body onload="loadApi()">
+  <body>
       <nav>
           <img src="img/lkh-logo.svg">
           <div>
@@ -23,13 +23,12 @@
       </nav>
 
       <section>
-          <div class="gray-background" id="orderDiv" style="position: relative;">
-              <form action="/order" method="POST">
-                  <h1 style="color:#000000;">Bestilling</h1>
+              <form action="action_page.php" method="GET">
+          <div class="gray-background" style="position: relative;" id="orderDiv">
                   <label class="form-text" for="butik" onchange="switchStore">Butik:</label><br>
                   <select name="butik" id="butik" onchange="switchStore(this)"></select><br><br>
-
                   <div id="oversigt"></div>
+                  <h1 style="color:#000000;">Bestilling</h1>
 
                   <label class="form-text" for="navn">Navn:</label><br>
                   <input type="text" id="navn" name="navn" value=""><br>
@@ -39,7 +38,10 @@
                   <input class="submit-button" type="button" value="Nulstil" onclick="resetBasket()"><br><br>
               </form>
 
+
           </div>
+          
+        </form>
       </section>
 
       <footer>
