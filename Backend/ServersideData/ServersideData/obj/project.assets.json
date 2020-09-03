@@ -6200,27 +6200,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\clemm\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\IKFa.skp\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programming\\Datatekniker\\H4\\Lagkagehuset\\Backend\\ServersideData\\ServersideData\\ServersideData.csproj",
+      "projectUniqueName": "C:\\Users\\IKFa.skp\\Documents\\GF4\\Lagkagehuset\\Backend\\ServersideData\\ServersideData\\ServersideData.csproj",
       "projectName": "ServersideData",
-      "projectPath": "D:\\Programming\\Datatekniker\\H4\\Lagkagehuset\\Backend\\ServersideData\\ServersideData\\ServersideData.csproj",
-      "packagesPath": "C:\\Users\\clemm\\.nuget\\packages\\",
-      "outputPath": "D:\\Programming\\Datatekniker\\H4\\Lagkagehuset\\Backend\\ServersideData\\ServersideData\\obj\\",
+      "projectPath": "C:\\Users\\IKFa.skp\\Documents\\GF4\\Lagkagehuset\\Backend\\ServersideData\\ServersideData\\ServersideData.csproj",
+      "packagesPath": "C:\\Users\\IKFa.skp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\IKFa.skp\\Documents\\GF4\\Lagkagehuset\\Backend\\ServersideData\\ServersideData\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\clemm\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\IKFa.skp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
