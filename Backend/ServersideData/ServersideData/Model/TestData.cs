@@ -29,7 +29,7 @@ namespace ServersideData.Model
             int i = 0;
             while (i < brod.Length)
             {
-                products.Add(new Product(i+1, brod[0]));
+                products.Add(new Product(i+1, brod[i]));
                 i++;
             }
             string[] adress = { "Amager Strandvej 112", "Amagerbrogade 148", "Vermlandsgade 51", "Bagsværd Hovedgade 128", "Passagerterminalen 10" };
