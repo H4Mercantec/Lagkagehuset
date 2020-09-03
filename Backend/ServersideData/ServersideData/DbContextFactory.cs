@@ -11,7 +11,7 @@ namespace ServersideData
         public SQLDbContext CreateDbContext(string[] args)
         {
             var builder = new DbContextOptionsBuilder<SQLDbContext>();
-            builder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SQLDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            builder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LagkagehusetDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             return new SQLDbContext(builder.Options);
         }
     }
