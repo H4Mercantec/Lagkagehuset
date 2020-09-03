@@ -65,7 +65,7 @@
           function loadApi()
           {
               //url = "http://jsonplaceholder.typicode.com/users"; 
-              url = "";// todoo tilføj url til api
+              url = "/shops?includeRollData=true";// todoo tilføj url til api
             var api = new XMLHttpRequest();
             api.open("GET", url, true);
                 
@@ -85,11 +85,12 @@
           
            function addAllShops()
            {
+               alert(JSON.stringify(apiArray));
               if (apiArray.length > 0)
               {
                   shops = "";
                   for (i = 0; i < apiArray.length; i++)
-                      shops += apiArray[i].name + ","; // todoo tilføj korekt label (name) til label i api
+                      shops += apiArray[i].city + ","; // todoo tilføj korekt label (name) til label i api
                   // todoo tilføj rundstykker
                }
 
