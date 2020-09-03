@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#fafafa">
   </head>
 
-  <body onload="addAllShops()">
+  <body onload="loadApi()">
       <nav>
           <img src="img/lkh-logo.svg">
           <div>
@@ -58,18 +58,45 @@
       <script src="js/main.js"></script>
       <script>
 
-          // todoo hent api over butikker og rundstykker her
-          // split api i shops 
-          // split api i rundstykker
+          apiArray = [];
           shops = "Amager- Strand,Amager- Amagerbrogade,Amager- Vermlandsgade,Bagsværd- Meny,Billund Lufthavn";
           rundstykker = 'almrundstykker,fransk-horn,giffel,handvaerker,kernebidder,majsstykke,sostjerne,trekorns';
 
-          allShops = shops.split(",");
-          liste = rundstykker.split(",");
-
-
-          function addAllShops()
+          function loadApi()
           {
+              //url = "http://jsonplaceholder.typicode.com/users"; 
+              url = "";// todoo tilføj url til api
+            var api = new XMLHttpRequest();
+            api.open("GET", url, true);
+                
+            api.onerror = () => { addAllShops(); }
+            api.onabort = () => { addAllShops(); }
+            api.ontimeout = () => { addAllShops(); }
+            api.onload = () => {
+                try {
+                    apiArray = JSON.parse(api.response);
+                    window.apiArray = apiArray;
+                    addAllShops();
+                } catch
+                {addAllShops();}
+            }
+            api.send();
+          }
+          
+           function addAllShops()
+           {
+              if (apiArray.length > 0)
+              {
+                  shops = "";
+                  for (i = 0; i < apiArray.length; i++)
+                      shops += apiArray[i].name + ","; // todoo tilføj korekt label (name) til label i api
+                  // todoo tilføj rundstykker
+               }
+
+              allShops = shops.split(",");
+              liste = rundstykker.split(",");
+
+              console.log(apiArray)
               allShops.forEach(shop => { addShopToDropdown(shop); });
               makeOversigt();
           }
