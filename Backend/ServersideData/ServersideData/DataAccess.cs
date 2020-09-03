@@ -20,5 +20,9 @@ namespace ServersideData
             return db.SaveChanges();
         }
 
+        public Code PlaceOrder(IEnumerable<Order> orders)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

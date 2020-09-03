@@ -9,7 +9,6 @@ namespace ServersideData
         int Commit();
         //Orders
         public Code PlaceOrder(IEnumerable<Order> orders);
-        public 
 
     }
 }
