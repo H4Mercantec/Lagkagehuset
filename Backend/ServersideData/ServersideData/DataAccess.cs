@@ -37,8 +37,6 @@ namespace ServersideData
             return inv;
         }
 
-<<<<<<< Updated upstream
-=======
         public ShopModel ConvertToShopModel(Shop shop, IEnumerable<InventoryModel> inven = null)
         {
             ShopModel sho = new ShopModel();
@@ -70,23 +68,27 @@ namespace ServersideData
             var.AddRange(testData.shops.FindAll(s => s.city.StartsWith(filter)));
             foreach (Shop s in var)
             {
-                shops.Add(ConvertToShopModel(s, ConvertToInvertoryModel(testData.inventories.FindAll(i => i.shopID == s.shopID))));
+                shops.Add(ConvertToShopModel(s));
             }
             return shops;
         }
 
         public IEnumerable<ShopModel> GetShopsWithInventory(string filter = "")
         {
-            throw new NotImplementedException();
+            List<Shop> var = new List<Shop>();
+            List<ShopModel> shops = new List<ShopModel>();
+            var.AddRange(testData.shops.FindAll(s => s.city.StartsWith(filter)));
+            foreach (Shop s in var)
+            {
+                shops.Add(ConvertToShopModel(s, ConvertToInvertoryModel(testData.inventories.FindAll(i => i.shopID == s.shopID))));
+            }
+            return shops;
         }
 
->>>>>>> Stashed changes
         public Code PlaceOrder(IEnumerable<Order> orders)
         {
             throw new NotImplementedException();
         }
-<<<<<<< Updated upstream
-=======
 
 
         /*private readonly SQLDbContext db;
@@ -103,6 +105,5 @@ namespace ServersideData
 
 
 
->>>>>>> Stashed changes
     }
 }
