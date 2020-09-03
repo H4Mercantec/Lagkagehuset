@@ -27,7 +27,7 @@
               <form action="action_page.php" method="GET">
                   <h1 style="color:#000000;">Bestilling</h1>
                   <label class="form-text" for="butik" onchange="switchStore">Butik:</label><br>
-                  <select name="butik" id="butik"></select><br><br>
+                  <select name="butik" id="butik" onchange="switchStore"></select><br><br>
 
                   <div id="oversigt"></div>
 
@@ -89,11 +89,12 @@
               {
                   shops = "";
                   for (i = 0; i < apiArray.length; i++)
-                      shops += apiArray[i].city + ",";
+                      shops += apiArray[i].city + " - " + apiArray[i].address + ",";
+                  // Note: A designated shop name should be considered in the UML structure/database
                }
 
               allShops = shops.split(",");
-              liste = rundstykker.split(",");
+              liste = [];
 
                console.log(apiArray)
                addShopToDropdown(undefined);
