@@ -1,33 +1,9 @@
-window.onload = () => {
-    var select = document.getElementById("butik");
-
-    var shops = ["Amager - Strand", "Amager - Amagerbrogade", "Amager - Vermlandsgade", "Bagsværd - Meny", "Billund Lufthavn"];
-    shops.forEach(shop => {   
-        var option = document.createElement("option"); 
-        option.text = shop;        
-        select.add(option);
-    });
+function addShopToDropdown(butik) {
+    select = document.getElementById("butik");
+    option = document.createElement("option");
+    option.text = (butik == undefined) ? "" : butik;
+    select.add(option);
 }
-
-var rolls = ['almrundstykker', 'fransk-horn','giffel','handvaerker','kernebidder','majsstykke','sostjerne','trekorns'];
-var html = "";
-
-for (i = 0; i < rolls.length; i++)
-{
-html += "<p>" + rolls[i].toUpperCase() + "</p>"
-html += "<div class='rollSection'>";
-html +=   "<div class='seperation'>";
-html +=     "<img src='img/" + rolls[i] + ".jpg'>";
-html +=     "<div>";
-html +=       "<div class='countAdjust'> + </div>";
-html +=       "<div class='countAdjust'> - </div>";
-html +=     "</div>";
-html +=   "</div>";
-html +=   "<input class='count' type='number' id='" + rolls[i] + "' name='" + rolls[i] +"' value='0'>";
-html += "</div>";
-}
-
-document.getElementById("oversigt").innerHTML = html;
 
 function switchStore(elm) {
     if (elm.value == "") makeOversigt(undefined);

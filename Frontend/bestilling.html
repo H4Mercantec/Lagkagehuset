@@ -1,6 +1,6 @@
 ﻿<!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Lagkagehuset</title>
     <meta name="description" content="">
@@ -10,70 +10,67 @@
     <link rel="stylesheet" href="css/main.css">
 
     <meta name="theme-color" content="#fafafa">
-  </head>
+</head>
 
-  <body>
-      <nav>
-          <img src="img/lkh-logo.svg">
-          <div>
-              <a href="index.html">Home</a>
-              <a href="bestilling.html">Bestil</a>
-              <a href="om.html">Om</a>
-          </div>
-      </nav>
+<body onload="loadApi()">
+    <nav>
+        <img src="img/lkh-logo.svg">
+        <div>
+            <a href="index.html">Home</a>
+            <a href="bestilling.html">Bestil</a>
+            <a href="om.html">Om</a>
+        </div>
+    </nav>
 
-      <section>
-              <form action="action_page.php" method="GET">
-          <div class="gray-background" style="position: relative;" id="orderDiv">
-                  <label class="form-text" for="butik" onchange="switchStore">Butik:</label><br>
-                  <select name="butik" id="butik" onchange="switchStore(this)"></select><br><br>
-                  <div id="oversigt"></div>
-                  <h1 style="color:#000000;">Bestilling</h1>
+    <section>
+        <div class="gray-background" id="orderDiv" style="position: relative;">
+            <form action="/order" method="POST">
+                <h1 style="color:#000000;">Bestilling</h1>
+                <label class="form-text" for="butik" onchange="switchStore">Butik:</label><br>
+                <select name="butik" id="butik" onchange="switchStore(this)"></select><br><br>
 
-                  <label class="form-text" for="navn">Navn:</label><br>
-                  <input type="text" id="navn" name="navn" value=""><br>
-                  <label class="form-text" for="telefon">Telefon:</label><br>
-                  <input type="text" id="telefon" name="telefon" value=""><br><br>
-                  <input class="submit-button" type="button" value="Bestil" onclick="placeOrder()"><br><br>
-                  <input class="submit-button" type="button" value="Nulstil" onclick="resetBasket()"><br><br>
-              </form>
+                <div id="oversigt"></div>
 
+                <label class="form-text" for="navn">Navn:</label><br>
+                <input type="text" id="navn" name="navn" value=""><br>
+                <label class="form-text" for="telefon">Telefon:</label><br>
+                <input type="text" id="telefon" name="telefon" value=""><br><br>
+                <input class="submit-button" type="button" value="Bestil" onclick="placeOrder()"><br><br>
+                <input class="submit-button" type="button" value="Nulstil" onclick="resetBasket()"><br><br>
+            </form>
 
-          </div>
-          
-        </form>
-      </section>
+        </div>
+    </section>
 
-      <footer>
-          <div>
-              <p>Lagkagehuset A/S</p>
-              <p>Dortheavej 10</p>
-              <p>Tlf. nr.: 72 14 47 00</p>
-          </div>
-          <div>
-              <p>DK</p>
-              <p>2400 København NV</p>
-              <p>CVR-nr.: 20213094</p>
-          </div>
-      </footer>
+    <footer>
+        <div>
+            <p>Lagkagehuset A/S</p>
+            <p>Dortheavej 10</p>
+            <p>Tlf. nr.: 72 14 47 00</p>
+        </div>
+        <div>
+            <p>DK</p>
+            <p>2400 København NV</p>
+            <p>CVR-nr.: 20213094</p>
+        </div>
+    </footer>
 
-      <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-      <script src="js/main.js"></script>
-      <script>
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
 
-          apiArray = [];
-          var currentStore = undefined;
-          shops = "Amager- Strand,Amager- Amagerbrogade,Amager- Vermlandsgade,Bagsværd- Meny,Billund Lufthavn";
-          rundstykker = 'almrundstykker,fransk-horn,giffel,handvaerker,kernebidder,majsstykke,sostjerne,trekorns';
-          rundstykkerImg = rundstykker.split(",");
+        apiArray = [];
+        var currentStore = undefined;
+        shops = "Amager- Strand,Amager- Amagerbrogade,Amager- Vermlandsgade,Bagsværd- Meny,Billund Lufthavn";
+        rundstykker = 'almrundstykker,fransk-horn,giffel,handvaerker,kernebidder,majsstykke,sostjerne,trekorns';
+        rundstykkerImg = rundstykker.split(",");
 
-          function loadApi()
-          {
-              //url = "http://jsonplaceholder.typicode.com/users"; 
-              url = "/shops?includeRollData=true";// todoo tilføj url til api
+        function loadApi() {
+            //url = "http://jsonplaceholder.typicode.com/users";
+            url = "/shops?includeRollData=true";// todoo tilføj url til api
             var api = new XMLHttpRequest();
             api.open("GET", url, true);
-                
+
             api.onerror = () => { addAllShops(); }
             api.onabort = () => { addAllShops(); }
             api.ontimeout = () => { addAllShops(); }
@@ -83,77 +80,73 @@
                     window.apiArray = apiArray;
                     addAllShops();
                 } catch
-                {addAllShops();}
+                { addAllShops(); }
             }
             api.send();
-          }
-          
-           function addAllShops()
-           {
-              if (apiArray.length > 0)
-              {
-                  shops = "";
-                  for (i = 0; i < apiArray.length; i++)
-                      shops += apiArray[i].city + " - " + apiArray[i].address + ",";
-                  // Note: A designated shop name should be considered in the UML structure/database
-               }
+        }
 
-              allShops = shops.split(",");
+        function addAllShops() {
+            if (apiArray.length > 0) {
+                shops = "";
+                for (i = 0; i < apiArray.length; i++)
+                    shops += apiArray[i].city + " - " + apiArray[i].address + ",";
+                // Note: A designated shop name should be considered in the UML structure/database
+            }
 
-               console.log(apiArray)
-               addShopToDropdown(undefined);
-              allShops.forEach(shop => { addShopToDropdown(shop); });
-              makeOversigt(undefined);
-          }
+            allShops = shops.split(",");
 
-          function makeOversigt(definedStore)
-          {
-              var listeOfRolls = definedStore == undefined ? [] : generateRollList(definedStore.inventories);
-              console.log(listeOfRolls);
-              oversigt = document.getElementById("oversigt");
-              html = "";
-              for (i = 0; i < listeOfRolls.length; i++) {
-                  var product = listeOfRolls[i].product;
-                  html += "<div style='text-align:center;'><b>" + product.name + "</b></div>";
-                  html += "<div style='width:100%;height:40vh;overflow: hidden'><img src='img/" + rundstykkerImg[product.productID-1] + ".jpg' style='position:relative;top:-50px;'></div>";
-                  html += "<div style='text-align:center'>";
-                  html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + rundstykkerImg[product.productID] + "\",-1)'> - </div>";
-                  html += "<div style='display:inline-table;width:50%'> <input style='width:auto;text-align:center;-webkit-appearance: none;-moz-appearance: textfield;' type='number' id='" + rundstykkerImg[product.productID] + "'  name='" + rundstykker[product.productID] + "' value='0'> </div>";
-                  html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + rundstykkerImg[product.productID] + "\",1)'> + </div><br>";
-                  html += "<div style='text-align:center;'><b>Tilgængelige: " + listeOfRolls[i].amount + " stk.</b></div>";
-                  html += "</div>";
-              }
-              oversigt.innerHTML = html;
-          }
+            console.log(apiArray)
+            addShopToDropdown(undefined);
+            allShops.forEach(shop => { addShopToDropdown(shop); });
+            makeOversigt(undefined);
+        }
 
-          function generateRollList(storeInventories) {
-              var rollList = [storeInventories.length];
-              for (var i = 0; i < storeInventories.length; i++) {
-                  rollList[i] = storeInventories[i];
-              }
-              return rollList;
-          }
+        function makeOversigt(definedStore) {
+            var listeOfRolls = definedStore == undefined ? [] : generateRollList(definedStore.inventories);
+            console.log(listeOfRolls);
+            oversigt = document.getElementById("oversigt");
+            html = "";
+            for (i = 0; i < listeOfRolls.length; i++) {
+                var product = listeOfRolls[i].product;
+                html += "<div style='text-align:center;'><b>" + product.name + "</b></div>";
+                html += "<div style='width:100%;height:40vh;overflow: hidden'><img src='img/" + rundstykkerImg[product.productID - 1] + ".jpg' style='position:relative;top:-50px;'></div>";
+                html += "<div style='text-align:center'>";
+                html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + rundstykkerImg[product.productID] + "\",-1)'> - </div>";
+                html += "<div style='display:inline-table;width:50%'> <input style='width:auto;text-align:center;-webkit-appearance: none;-moz-appearance: textfield;' type='number' id='" + rundstykkerImg[product.productID] + "'  name='" + rundstykker[product.productID] + "' value='0'> </div>";
+                html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + rundstykkerImg[product.productID] + "\",1)'> + </div><br>";
+                html += "<div style='text-align:center;'><b>Tilgængelige: " + listeOfRolls[i].amount + " stk.</b></div>";
+                html += "</div>";
+            }
+            oversigt.innerHTML = html;
+        }
 
-          function changeAmount(id,amount)
-          {
-              if ((document.getElementById(id).value > 0 && amount == -1) || amount == 1) {
-                  var newAmount = document.getElementById(id).value * 1 + amount;
-                  var inventoryAmount = 0;
+        function generateRollList(storeInventories) {
+            var rollList = [storeInventories.length];
+            for (var i = 0; i < storeInventories.length; i++) {
+                rollList[i] = storeInventories[i];
+            }
+            return rollList;
+        }
 
-                  for (var i = 0; i < currentStore.inventories.length; i++) {
-                      if (rundstykkerImg[currentStore.inventories[i].product.productID] == id) {
-                          inventoryAmount = currentStore.inventories[i].amount;
-                          break;
-                      }
-                  }
+        function changeAmount(id, amount) {
+            if ((document.getElementById(id).value > 0 && amount == -1) || amount == 1) {
+                var newAmount = document.getElementById(id).value * 1 + amount;
+                var inventoryAmount = 0;
 
-                  if (newAmount > inventoryAmount) {
-                      newAmount = inventoryAmount;
-                      alert("Max antal rundstykker tilføjet");
-                  }
-              }
-              document.getElementById(id).value = newAmount;
-          }
-      </script>
-  </body>
+                for (var i = 0; i < currentStore.inventories.length; i++) {
+                    if (rundstykkerImg[currentStore.inventories[i].product.productID] == id) {
+                        inventoryAmount = currentStore.inventories[i].amount;
+                        break;
+                    }
+                }
+
+                if (newAmount > inventoryAmount) {
+                    newAmount = inventoryAmount;
+                    alert("Max antal rundstykker tilføjet");
+                }
+            }
+            document.getElementById(id).value = newAmount;
+        }
+    </script>
+</body>
 </html>
