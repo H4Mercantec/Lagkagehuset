@@ -8,11 +8,11 @@ namespace ServersideData
 {
     public class DataAccess : IDataAccess
     {
-        private static TestData testData;
+        private static TestData testData = new TestData();
 
         public DataAccess()
         {
-            testData = new TestData();
+
         }
 
         public int CheckOrder(IEnumerable<OrderModel> orders)
