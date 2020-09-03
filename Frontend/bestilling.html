@@ -27,7 +27,7 @@
               <form action="action_page.php" method="GET">
                   <h1 style="color:#000000;">Bestilling</h1>
                   <label class="form-text" for="butik" onchange="switchStore">Butik:</label><br>
-                  <select name="butik" id="butik" onchange="switchStore"></select><br><br>
+                  <select name="butik" id="butik" onchange="switchStore(this)"></select><br><br>
 
                   <div id="oversigt"></div>
 
@@ -61,6 +61,7 @@
           apiArray = [];
           shops = "Amager- Strand,Amager- Amagerbrogade,Amager- Vermlandsgade,Bagsværd- Meny,Billund Lufthavn";
           rundstykker = 'almrundstykker,fransk-horn,giffel,handvaerker,kernebidder,majsstykke,sostjerne,trekorns';
+          rundstykkerImg = rundstykker.split(",");
 
           function loadApi()
           {
@@ -94,28 +95,39 @@
                }
 
               allShops = shops.split(",");
-              liste = [];
 
                console.log(apiArray)
                addShopToDropdown(undefined);
               allShops.forEach(shop => { addShopToDropdown(shop); });
-              makeOversigt();
+              makeOversigt(undefined);
           }
 
-          function makeOversigt()
+          function makeOversigt(definedStore)
           {
+              var listeOfRolls = definedStore == undefined? [] : generateRollList(definedStore.inventories);
+
               oversigt = document.getElementById("oversigt");
               html = "";
-              for (i = 0; i < liste.length; i++) {
-                  html += "<div style='text-align:center;'><b>" + liste[i] + "</b></div>";
-                  html += "<div style='width:100%;height:40vh;overflow: hidden'><img src='img/" + liste[i] + ".jpg' style='position:relative;top:-50px;'></div>";
+              for (i = 0; i < listeOfRolls.length; i++) {
+                  var product = listeOfRolls[i].product;
+                  html += "<div style='text-align:center;'><b>" + product.name + "</b></div>";
+                  html += "<div style='width:100%;height:40vh;overflow: hidden'><img src='img/" + rundstykkerImg[product.productID] + ".jpg' style='position:relative;top:-50px;'></div>";
                   html += "<div style='text-align:center'>";
-                  html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + liste[i] + "\",-1)'> - </div>";
-                  html += "<div style='display:inline-table;width:50%'> <input style='width:auto;text-align:center;-webkit-appearance: none;-moz-appearance: textfield;' type='number' id='" + liste[i] + "'  name='" + liste[i] + "' value='0'> </div>";
-                  html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + liste[i] + "\",1)'> + </div><br>";
+                  html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + rundstykker[product.productID] + "\",-1)'> - </div>";
+                  html += "<div style='display:inline-table;width:50%'> <input style='width:auto;text-align:center;-webkit-appearance: none;-moz-appearance: textfield;' type='number' id='" + rundstykker[product.productID] + "'  name='" + rundstykker[product.productID] + "' value='0'> </div>";
+                  html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + rundstykker[product.productID] + "\",1)'> + </div><br>";
+                  html += "<div style='text-align:center;'><b>Tilgængelige: " + listeOfRolls[i].amount + " stk.</b></div>";
                   html += "</div>";
               }
               oversigt.innerHTML = html;
+          }
+
+          function generateRollList(storeInventories) {
+              var rollList = [storeInventories.length];
+              for (var i = 0; i < storeInventories.length; i++) {
+                  rollList[i] = storeInventories[i];
+              }
+              return rollList;
           }
 
           function changeAmount(id,amount)

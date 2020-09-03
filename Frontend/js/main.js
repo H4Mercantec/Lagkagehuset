@@ -5,7 +5,15 @@ function addShopToDropdown(butik) {
     select.add(option);
 }
 
-function switchStore(e, elm) {
-    console.log(e);
-    console.log(elm);
+function switchStore(elm) {
+    if (elm.value == "") makeOversigt(undefined);
+    var selectedStore = undefined;
+    for (i = 0; i < apiArray.length; i++) {
+        var combinedName = apiArray[i].city + " - " + apiArray[i].address
+        if (combinedName == elm.value) {
+            selectedStore = apiArray[i];
+            break;
+        }
+    }
+    makeOversigt(selectedStore);
 }
