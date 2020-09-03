@@ -27,18 +27,17 @@
               <form action="action_page.php" method="GET">
                   <h1 style="color:#000000;">Bestilling</h1>
                   <label class="form-text" for="butik">Butik:</label><br>
-                  <select name="butik" id="butik"></select><br>
+                  <select name="butik" id="butik"></select><br><br>
+
+                  <div id="oversigt"></div>
+
                   <label class="form-text" for="navn">Navn:</label><br>
                   <input type="text" id="navn" name="navn" value=""><br>
                   <label class="form-text" for="telefon">Telefon:</label><br>
                   <input type="text" id="telefon" name="telefon" value=""><br><br>
-                  <label class="form-text" for="antalrundstykker">Antal Rundstykker:</label><br>
-                  <input type="text" id="antalrundstykker" name="antalrundstykker" value=""><br><br>
                   <input class="submit-button" type="submit" value="Bestil"><br><br>
               </form>
-              <div id="oversigt">
 
-              </div>
           </div>
       </section>
 
@@ -58,26 +57,44 @@
       <script src="js/vendor/modernizr-3.11.2.min.js"></script>
       <script src="js/main.js"></script>
       <script>
+
+          // todoo hent api over butikker og rundstykker her
+          // split api i shops 
+          // split api i rundstykker
+          shops = "Amager- Strand,Amager- Amagerbrogade,Amager- Vermlandsgade,Bagsværd- Meny,Billund Lufthavn";
+          rundstykker = 'almrundstykker,fransk-horn,giffel,handvaerker,kernebidder,majsstykke,sostjerne,trekorns';
+
+          allShops = shops.split(",");
+          liste = rundstykker.split(",");
+
+
           function addAllShops()
           {
-              shops = "Amager- Strand,Amager- Amagerbrogade,Amager- Vermlandsgade,Bagsværd- Meny,Billund Lufthavn";
-              allShops = shops.split(",");
               allShops.forEach(shop => { addShopToDropdown(shop); });
+              makeOversigt();
           }
 
-          oversigt = document.getElementById("oversigt");
-          liste = ['almrundstykker', 'fransk-horn','giffel','handvaerker','kernebidder','majsstykke','sostjerne','trekorns'];
-          html = "";
-          for (i = 0; i < liste.length; i++)
+          function makeOversigt()
           {
-              html += "<div><img src='img/" + liste[i] + ".jpg'></div>";
-              html += "<div>";
-              html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center'> - </div>";
-              html += "<div style='display:inline-table;width:50%'> <input style='width:auto;text-align:center;-webkit-appearance: none;-moz-appearance: textfield;' type='number' id='" + liste[i] + "' name='" + liste[i] +"' value='0'> </div>";
-              html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center'> + </div><br>";
-              html += "</div>";
+              oversigt = document.getElementById("oversigt");
+              html = "";
+              for (i = 0; i < liste.length; i++) {
+                  html += "<div style='text-align:center;'><b>" + liste[i] + "</b></div>";
+                  html += "<div style='width:100%;height:40vh;overflow: hidden'><img src='img/" + liste[i] + ".jpg' style='position:relative;top:-50px;'></div>";
+                  html += "<div style='text-align:center'>";
+                  html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + liste[i] + "\",-1)'> - </div>";
+                  html += "<div style='display:inline-table;width:50%'> <input style='width:auto;text-align:center;-webkit-appearance: none;-moz-appearance: textfield;' type='number' id='" + liste[i] + "'  name='" + liste[i] + "' value='0'> </div>";
+                  html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center' onclick='changeAmount(\"" + liste[i] + "\",1)'> + </div><br>";
+                  html += "</div>";
+              }
+              oversigt.innerHTML = html;
           }
-          oversigt.innerHTML = html;
+
+          function changeAmount(id,amount)
+          {
+              if ((document.getElementById(id).value>0&&amount==-1)||amount==1)
+                  document.getElementById(id).value = document.getElementById(id).value*1+amount;
+          }
       </script>
   </body>
 </html>
