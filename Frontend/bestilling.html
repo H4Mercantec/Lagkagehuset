@@ -36,6 +36,9 @@
                   <input type="text" id="antalrundstykker" name="antalrundstykker" value=""><br><br>
                   <input class="submit-button" type="submit" value="Bestil"><br><br>
               </form>
+              <div id="oversigt">
+
+              </div>
           </div>
       </section>
 
@@ -61,6 +64,20 @@
               allShops = shops.split(",");
               allShops.forEach(shop => { addShopToDropdown(shop); });
           }
+
+          oversigt = document.getElementById("oversigt");
+          liste = ['almrundstykker', 'fransk-horn','giffel','handvaerker','kernebidder','majsstykke','sostjerne','trekorns'];
+          html = "";
+          for (i = 0; i < liste.length; i++)
+          {
+              html += "<div><img src='img/" + liste[i] + ".jpg'></div>";
+              html += "<div>";
+              html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center'> - </div>";
+              html += "<div style='display:inline-table;width:50%'> <input style='width:auto;text-align:center;-webkit-appearance: none;-moz-appearance: textfield;' type='number' id='" + liste[i] + "' name='" + liste[i] +"' value='0'> </div>";
+              html += "<div style='display:inline-table;border:1px solid silver;width:20%;text-align:center'> + </div><br>";
+              html += "</div>";
+          }
+          oversigt.innerHTML = html;
       </script>
   </body>
 </html>
