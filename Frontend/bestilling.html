@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html class="no-js" lang="">
+<html>
   <head>
     <meta charset="utf-8">
     <title>Lagkagehuset</title>
@@ -12,45 +12,55 @@
     <meta name="theme-color" content="#fafafa">
   </head>
 
-  <body>
-    <nav>
-      <img src="img/lkh-logo.svg">
-      <div>
-        <a href="index.html">Home</a>
-        <a href="bestilling.html">Bestil</a>
-        <a href="om.html">Om</a>
-      </div>
-    </nav>   
-      
-    <section>
-        <div class="gray-background" style="position: relative;">
-          <form action="action_page.php" method="GET">
-          <h1 style="color:#000000;">Bestilling</h1>
-              <label class="form-text" for="fname">Navn:</label><br>
-              <input type="text" id="fname" name="fname" value=""><br>
-              <label class="form-text" for="lname">Telefon:</label><br>
-              <input type="text" id="lname" name="lname" value=""><br><br>
-              <label class="form-text" for="lname">Antal Rundstykker:</label><br>
-              <input type="text" id="antalrundstykker" name="antalrundstykker" value=""><br><br>
-              <input class="submit-button" type="submit" value="Submit"><br><br>
-          </form>
-        </div>
-    </section>
-        
-    <footer>  
-      <div>          
-        <p>Lagkagehuset A/S</p>
-        <p>Dortheavej 10</p>
-        <p>Tlf. nr.: 72 14 47 00</p>
-      </div>
-      <div>
-        <p>DK</p>
-        <p>2400 København NV</p>
-        <p>CVR-nr.: 20213094</p>
-      </div>
-    </footer>
+  <body onload="addAllShops()">
+      <nav>
+          <img src="img/lkh-logo.svg">
+          <div>
+              <a href="index.html">Home</a>
+              <a href="bestilling.html">Bestil</a>
+              <a href="om.html">Om</a>
+          </div>
+      </nav>
 
-          <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-          <script src="js/main.js"></script>
+      <section>
+          <div class="gray-background" style="position: relative;">
+              <form action="action_page.php" method="GET">
+                  <h1 style="color:#000000;">Bestilling</h1>
+                  <label class="form-text" for="butik">Butik:</label><br>
+                  <select name="butik" id="butik"></select><br>
+                  <label class="form-text" for="navn">Navn:</label><br>
+                  <input type="text" id="navn" name="navn" value=""><br>
+                  <label class="form-text" for="telefon">Telefon:</label><br>
+                  <input type="text" id="telefon" name="telefon" value=""><br><br>
+                  <label class="form-text" for="antalrundstykker">Antal Rundstykker:</label><br>
+                  <input type="text" id="antalrundstykker" name="antalrundstykker" value=""><br><br>
+                  <input class="submit-button" type="submit" value="Bestil"><br><br>
+              </form>
+          </div>
+      </section>
+
+      <footer>
+          <div>
+              <p>Lagkagehuset A/S</p>
+              <p>Dortheavej 10</p>
+              <p>Tlf. nr.: 72 14 47 00</p>
+          </div>
+          <div>
+              <p>DK</p>
+              <p>2400 København NV</p>
+              <p>CVR-nr.: 20213094</p>
+          </div>
+      </footer>
+
+      <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+      <script src="js/main.js"></script>
+      <script>
+          function addAllShops()
+          {
+              shops = "Amager- Strand,Amager- Amagerbrogade,Amager- Vermlandsgade,Bagsværd- Meny,Billund Lufthavn";
+              allShops = shops.split(",");
+              allShops.forEach(shop => { addShopToDropdown(shop); });
+          }
+      </script>
   </body>
 </html>
