@@ -26,3 +26,49 @@ function resetBasket() {
         optElm.value = 0;
     }
 }
+
+
+
+
+function placeOrder() {
+    var order = generateOrder();
+    var api = new XMLHttpRequest();
+    api.open("POST", "/order", true);
+
+    api.onload = () => {
+        showOrderResponse(api.response);
+    }
+    api.send();
+}
+
+function generateOrder() {
+    var rolls = [];
+    var order = {
+        "name": undefined,
+        "address": undefined,
+        "phone": undefined,
+        "rolls": []
+    };
+
+    for (var i = 0; i < rundstykkerImg.length; i++) {
+        var optRoll = document.getElementById(rundstykkerImg[i]);
+        if (optRoll == undefined) continue;
+        var amount = optRoll.value;
+        if (amount > 0) {
+            order.rolls.push({ "productID": i, "amount": amount });
+        }
+    }
+
+    return order;
+}
+
+
+function showOrderResponse(data) {
+
+    orderDiv = document.getElementById("orderDiv");
+    var div = document.createElement("div");
+    var divText = document.createTextNode(data);
+    div.appendChild(divText);
+    orderDiv.innerHTML = "";
+    orderDiv.appendChild(div);
+}
